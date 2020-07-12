@@ -19,12 +19,14 @@ JNIEXPORT jstring JNICALL Java_com_android_ndk_curlActivity_getHTML(JNIEnv *env,
     std::string response;
     const char *addr = env->GetStringUTFChars(url, 0);
     curl = curl_easy_init();
+
+   struct curl_httppost *post = NULL;
+   struct curl_httppost *last = NULL;
+
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL, addr);
 
-        // 웹서버에서 모바일 접속으로 인식할 수 있도록 임의의 User Agent 값을 넣었다.
-        curl_easy_setopt(curl, CURLOPT_USERAGENT,
-        "Mozilla/5.0 (Linux; Android 4.4.2; Nexus 5 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36");
+        //FILE *img = fopen("/sdcard/test.jpg","wb");
 
         // SSL 관련 옵션.
         // 3번째 인자값이 0일 경우 인증서 진위 여부에 상관 없이 접속. 기본값 1.
@@ -35,8 +37,13 @@ JNIEXPORT jstring JNICALL Java_com_android_ndk_curlActivity_getHTML(JNIEnv *env,
         // redirecte 사용.
         curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
-        // post 전송시 사용.
-        //curl_easy_setopt(curl, CURLOPT_POSTFIELDS, "name=daniel&project=curl");
+        curl_formadd(&post, &last,
+            CURLFORM_COPYNAME, "file",
+            CURLFORM_FILE, "/sdcard/test.jpg",
+            CURLFORM_END
+        );
+        curl_easy_setopt(curl, CURLOPT_HTTPPOST, post);
+
 
         // response 의 response 를 처리하는 함수 설정.
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, responseWriter);
@@ -44,7 +51,6 @@ JNIEXPORT jstring JNICALL Java_com_android_ndk_curlActivity_getHTML(JNIEnv *env,
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
         res = curl_easy_perform(curl);
-        // 실패할 경우 메세지 출력.
         if(res != CURLE_OK) {
             response = curl_easy_strerror(res);
         }

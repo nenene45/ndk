@@ -49,7 +49,7 @@ public class curlActivity extends Activity {
         Log.e("test",html);
 
         long time2 = System.currentTimeMillis ();
-        Log.e("test","tile : " +(( time2 - time1 ) / 1000.0));
+        Log.e("test","tile : " + (( time2 - time1 ) / 1000.0) );
 
     }
 

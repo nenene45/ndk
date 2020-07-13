@@ -39,18 +39,8 @@ LOCAL_CPPFLAGS += -std=c++14
 LOCAL_SRC_FILES     := main.cpp
 
 LOCAL_STATIC_LIBRARIES  := curl
+# --------------- log ---------------
 LOCAL_LDLIBS:= -llog
 
 include $(BUILD_SHARED_LIBRARY)
 
-# --------------- log ---------------
-
-#include $(CLEAR_VARS)
-#
-#LOCAL_MODULE    := log
-#LOCAL_SRC_FILES := main.cpp
-#
-##log에 대한 lib를 추가합니다.
-#LOCAL_LDLIBS:= -llog
-#
-#include $(BUILD_SHARED_LIBRARY)

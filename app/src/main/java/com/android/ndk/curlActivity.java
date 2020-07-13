@@ -33,8 +33,6 @@ public class curlActivity extends Activity {
         });
     }
 
-
-
     public void initViews() {
         mWebView = (WebView) findViewById(R.id.webView);
         mEditText = (EditText)findViewById(R.id.editText);
@@ -44,19 +42,15 @@ public class curlActivity extends Activity {
     }
 
     public void loadHtml(final String url) {
-        mBackgroundHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                final String html = getHTML(url);
-                Log.e("test",html);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mWebView.loadData(html, "text/html; charset=UTF-8", "utf-8");
-                    }
-                });
-            }
-        });      
+
+        long time1 = System.currentTimeMillis ();
+
+        final String html = getHTML(url);
+        Log.e("test",html);
+
+        long time2 = System.currentTimeMillis ();
+        Log.e("test","tile : " +(( time2 - time1 ) / 1000.0));
+
     }
 
     @Override

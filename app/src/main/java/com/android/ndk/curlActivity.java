@@ -48,7 +48,7 @@ public class curlActivity extends Activity {
             @Override
             public void run() {
                 final String html = getHTML(url);
-                Log.d("test",html);
+                Log.e("test",html);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

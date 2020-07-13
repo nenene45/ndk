@@ -45,6 +45,5 @@ JNIEXPORT jstring JNICALL Java_com_android_ndk_curlActivity_getHTML(JNIEnv *env,
         }
         curl_easy_cleanup(curl);
     }
-
     return env->NewStringUTF(response.c_str());
 }

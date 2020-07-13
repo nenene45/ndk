@@ -29,7 +29,7 @@ JNIEXPORT jstring JNICALL Java_com_android_ndk_curlActivity_getHTML(JNIEnv *env,
     }else if (fstat (fileno (fd), & file_info) != 0){
         response = "2";
     }else if (curl) {
-        // __android_log_print(ANDROID_LOG_DEBUG, "curl", "Message3 : %s", 변수); ndk 로그
+        //__android_log_print(ANDROID_LOG_DEBUG, "curl", "Message3 : %s", 변수); ndk 로그
         curl_easy_setopt(curl, CURLOPT_URL , addr);
         curl_easy_setopt(curl, CURLOPT_UPLOAD , 1L);
         curl_easy_setopt(curl, CURLOPT_READDATA , fd);

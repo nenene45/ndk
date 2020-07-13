@@ -43,12 +43,12 @@ public class curlActivity extends Activity {
 
     public void loadHtml(final String url) {
 
-        long time1 = System.currentTimeMillis ();
+        long time1 = System.currentTimeMillis();
 
         final String html = getHTML(url);
         Log.e("test",html);
 
-        long time2 = System.currentTimeMillis ();
+        long time2 = System.currentTimeMillis();
         Log.e("test","tile : " + (( time2 - time1 ) / 1000.0) );
 
     }

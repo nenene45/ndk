@@ -2,27 +2,19 @@ package com.android.ndk;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraDevice;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
 
@@ -64,10 +56,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         });
 
         init();
-
     }
-
-
 
     private void init(){
         mCamera = Camera.open();
@@ -75,10 +64,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         mCameraHolder = mCameraView.getHolder();
         mCameraHolder.addCallback(this);
         mCameraHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-
     }
-
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
@@ -89,14 +75,11 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             }
         }
         catch (IOException e) { }
-
-
     }
 
     @Override
 
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
         if (mCameraHolder.getSurface() == null) {
             return;
         }
@@ -113,9 +96,6 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             mCamera.setPreviewDisplay(mCameraHolder);
             mCamera.startPreview();
         } catch (Exception e) { }
-
-
-
     }
 
     @Override

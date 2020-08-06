@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ndk</string>
+    <string name="share">Sectec app for share</string>
+    <string name="dontshare">Nothing the application for share.</string>
 </resources>
